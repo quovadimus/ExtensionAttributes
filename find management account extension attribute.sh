@@ -10,8 +10,8 @@
 
 
 apiURL="https://svr-mac-alpha.nfcu.net:8443/JSSResource/computers/macaddress/"
-apiUser="macsupportteam"
-apiPass="macsupportteam"
+apiUser="yourusernamehere"
+apiPass="yourpasswordhere"
 MacAdd=$(networksetup -getmacaddress en0 | awk '{ print $3 }' | sed 's/:/./g')
 
 ManAccount=$(curl -s -u $apiUser:$apiPass $apiURL$MacAdd | xpath /computer/general/remote_management/management_username[1] | sed 's/<management_username>//;s/<\/management_username>//')
