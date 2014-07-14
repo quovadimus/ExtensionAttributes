@@ -3,7 +3,7 @@
 ############################################################################
 #
 # Extension Attribute Grabs the logged in user, checks to see if they have specific Google Chrome extension installed.
-# Looking for TweetDeck
+# Looking for TweetDeck; each Chrome extension will have a different folder name, you'll need to swap out the folder names for whatever you are looking for.
 #
 # Author Jennifer Unger
 ############################################################################
