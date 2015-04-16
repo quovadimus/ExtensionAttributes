@@ -6,7 +6,7 @@
 #
 # First the script looks for the com.Adobe.Common CS6.plist file, if found, it will pull the creation date from the file.
 # If the file is not found, it will pull the creation date from the Application, Adobe Extension Manager CS6.
-# It was found that the plist was not always present in all user folders.
+# It was found that the plist was not always present in all user folders, so we are using the Application date as a fallback.
 # This plist and application were chosen because they are included in all installs of CS and because they can be used to easily distinguish between version 5.5 and 6.
 # Both variables can be changed at the beginning of the script.
 # 
