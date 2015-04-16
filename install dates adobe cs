@@ -1,0 +1,41 @@
+#!/bin/bash
+############################################################################
+#Extension Attribute 
+#
+# Second Draft- Looking specifically for install dates for CS5.5 and CS6.
+#
+# First the script looks for the com.Adobe.Common CS6.plist file, if found, it will pull the creation date from the file.
+# If the file is not found, it will pull the creation date from the Application, Adobe Extension Manager CS6.
+# It was found that the plist was not always present in all user folders.
+# This plist and application were chosen because they are included in all installs of CS and because they can be used to easily distinguish between version 5.5 and 6.
+# Both variables can be changed at the beginning of the script.
+# 
+# By Jennifer Unger 4-16-2015
+############################################################################
+
+# First Get Variable Values
+loggedInUser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");'`
+
+plist='com.Adobe.Common CS6.plist'
+
+application='Adobe Extension Manager CS6'
+
+file=/Users/$loggedInUser/Library/Preferences/"$plist"
+
+# then check for plist and report back creation dates
+
+if [ -f "$file" ]
+then 
+	variable=$(mdls /Users/$loggedInUser/Library/Preferences/"$plist" | grep kMDItemFSCreationDate | awk '{print $3}')
+
+echo "<result>$variable</result>"
+	
+else
+
+	variable2=$(mdls /Applications/"$application" | grep kMDItemFSCreationDate | awk '{print $3}')
+
+	echo "<result>$variable2</result>"
+fi
+
+
+
