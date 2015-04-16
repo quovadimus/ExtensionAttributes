@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#
+############################################################################
+#Extension Attribute 
+#
+# First Draft - attempt to locate install date by grabbing the creation date of the relevant plist (cs6 in this case) from the logged in user
+# By Jennifer Unger 4-16-2015
+############################################################################
+
+loggedInUser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");'`
+
+plist='com.Adobe.Common CS6.plist'
+
+
+mdls /Users/$loggedInUser/Library/Preferences/'$plist' | grep kMDItemFSCreationDate | awk '{print $3}'
+
+echo <result>$3</result>
+
