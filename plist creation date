@@ -13,7 +13,7 @@ loggedInUser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConso
 plist='com.Adobe.Common CS6.plist'
 
 
-mdls /Users/$loggedInUser/Library/Preferences/'$plist' | grep kMDItemFSCreationDate | awk '{print $3}'
+variable=$(mdls /Users/$loggedInUser/Library/Preferences/"$plist" | grep kMDItemFSCreationDate | awk '{print $3}')
 
-echo "<result>$3</result>""
+echo "<result>$variable</result>"
 
