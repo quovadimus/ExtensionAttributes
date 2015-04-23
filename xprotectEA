@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#
+############################################################################
+#Extension Attribute 
+#
+# First Draft - check xprotect version number
+# By Jennifer Unger 4-24-2015
+############################################################################
+
+
+
+xprotect=$(defaults read /System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/XProtect.meta Version)
+
+echo "<result>$xprotect</result>"
