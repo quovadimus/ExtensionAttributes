@@ -14,7 +14,7 @@
 ############################################################################
 
 # First Get Variable Values
-loggedInUser=`python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");'`
+loggedInUser=$(python -c 'from SystemConfiguration import SCDynamicStoreCopyConsoleUser; import sys; username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]; username = [username,""][username in [u"loginwindow", None, u""]]; sys.stdout.write(username + "\n");')
 
 plist='com.Adobe.Common CS6.plist'
 
@@ -26,7 +26,7 @@ file=/Users/$loggedInUser/Library/Preferences/"$plist"
 
 if [ -f "$file" ]
 then 
-	variable=$(mdls /Users/$loggedInUser/Library/Preferences/"$plist" | grep kMDItemFSCreationDate | awk '{print $3}')
+	variable=$(mdls /Users/"$loggedInUser"/Library/Preferences/"$plist" | grep kMDItemFSCreationDate | awk '{print $3}')
 
 echo "<result>$variable</result>"
 	
