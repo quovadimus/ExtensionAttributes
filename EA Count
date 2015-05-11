@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+############################################################################
+#
+# Extension Attribute displays number of system configuration profiles installed.
+# Designed as a quick visual verification that the right number of profiles are installed; as opposed to listing them all.
+# EA for listing all profiles is also available; ExtensionAttributes/Configuration Profiles System Level.sh
+#
+# Created by Jennifer Unger
+############################################################################
+
+count=$(profiles -C -v | awk -F: '/attribute: name/{print $NF}' | wc -l)
+
+echo "<result>$count</result>"
