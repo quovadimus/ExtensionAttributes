@@ -1,0 +1,10 @@
+#!/bin/sh
+#locating chrome installs that were in the wrong location
+
+chromeKS=`defaults read /Applications/Utilities/Google\ Chrome.app/Contents/Info.plist KSVersion`
+
+if [ -z "$chromeKS" ]; then
+	echo "<result>No</result>"
+else
+	echo "<result>$chromeKS</result>"
+fi
