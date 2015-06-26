@@ -9,7 +9,7 @@
 
 
 
-apiURL="https://svr-mac-alpha.nfcu.net:8443/JSSResource/computers/macaddress/"
+apiURL="https://digitalempresstech.com:8443/JSSResource/computers/macaddress/"
 apiUser="yourusernamehere"
 apiPass="yourpasswordhere"
 MacAdd=$(networksetup -getmacaddress en0 | awk '{ print $3 }' | sed 's/:/./g')
