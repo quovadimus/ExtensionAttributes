@@ -1,0 +1,9 @@
+#!/bin/bash
+#EA to Check the interval set on the com.google.Keystone.Agent plist. Controls Chromes ability to auto-update.  Set to 0 to prevent.
+# Jennifer Unger 8-4-2015
+user=`ls -la /dev/console | cut -d " " -f 4`
+
+
+interval=`defaults read /Users/$user/Library/Preferences/com.google.Keystone.Agent.plist checkInterval`
+
+echo "<result>$interval</result>"
