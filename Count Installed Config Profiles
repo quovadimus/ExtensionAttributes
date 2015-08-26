@@ -1,0 +1,5 @@
+#!/bin/bash
+
+count=$(profiles -C -v | awk -F: '/attribute: name/{print $NF}' | wc -l)
+
+echo "<result>$count</result>"
